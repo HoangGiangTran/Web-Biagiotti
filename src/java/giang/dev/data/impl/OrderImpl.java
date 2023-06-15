@@ -14,7 +14,6 @@ import giang.dev.data.model.Order;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
-
 public class OrderImpl implements OrderDao {
 
     Connection con = MySQLDriver.getInstance().getConnection();
@@ -72,10 +71,10 @@ public class OrderImpl implements OrderDao {
 
     @Override
     public Order find(int id) {
-        String sql = "SELECT * FROM ORDERS";
+        String sql = "SELECT * FROM ORDERS WHERE ID = ?";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
-
+            stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 String code = rs.getString("code");
@@ -119,8 +118,26 @@ public class OrderImpl implements OrderDao {
 
     @Override
     public List<Order> findByUser(int userId) {
-        // TODO Auto-generated method stub
-        return null;
+        List<Order> orderList = new ArrayList<>();
+        String sql = "SELECT * FROM ORDERS WHERE user_id = ? ";
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, userId);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String code = rs.getString("code");
+                String status = rs.getString("status");
+                Timestamp createdAt = rs.getTimestamp("created_at");
+
+                orderList.add(new Order(id, code, status, userId, createdAt));
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return orderList;
     }
 
     @Override
@@ -129,7 +146,7 @@ public class OrderImpl implements OrderDao {
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, code);
-            
+
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
@@ -153,7 +170,7 @@ public class OrderImpl implements OrderDao {
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, status);
-            
+
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
@@ -172,26 +189,26 @@ public class OrderImpl implements OrderDao {
 
     @Override
     public double earningOrderByDay(String date) {
-        double tatol = 0;
-        String sql = "SELECT * FROM ORDERS WEHRE DATE(created_at) = ?";
+        double total = 0;
+        String sql = "SELECT * FROM ORDERS WHERE date(created_at)=?";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, date);
             ResultSet rs = stmt.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 int id = rs.getInt("id");
                 String code = rs.getString("code");
                 String status = rs.getString("status");
                 int userId = rs.getInt("user_id");
                 Timestamp createdAt = rs.getTimestamp("created_at");
-                
+
                 Order order = new Order(id, code, status, userId, createdAt);
-                tatol += order.getTotal();
+                total += order.getTotal();
             }
         } catch (Exception ex) {
             Logger.getLogger(UserImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return tatol;
+        return total;
     }
 
 }

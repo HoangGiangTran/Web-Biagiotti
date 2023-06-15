@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
               crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="./assets/css/main.css" />
+        <link rel="stylesheet" type="text/css" href="../assets/css/main1.css" />
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
@@ -27,9 +27,7 @@
                 <div class="container1">
                     <div class="header-info-row">
                         <div class="header-info-email" white>
-                            <a href="HomeServlet">
-                                <img src="https://public-assets.envato-static.com/assets/logos/envato_market-dde916a48af7413e54aa058fe7ae6856752fca799da4bec355f00aea904bfa19.svg" alt="lỗi" class="global-header-logo">
-                            </a>
+                            <a href="biagiottitheme@gmail.com">biagiottitheme@gmail.com</a>
                         </div>
                         <div class="header-info-Free-shipping">Free shipping on international orders of $150+</div>
                         <div class="header-info-log-in">
@@ -50,14 +48,17 @@
                 </div>
             </div>
             <div class="header-menu">
-                <div class="container1">
+                <div class="container2">
                     <div class="header-menu-row">
+                        <!-- 
                         <div class="header-menu-wishlist">
                             <i class="fa fa-heart-o" aria-hidden="true"></i>
                             <span>Wishlist</span>
-                        </div>
-
-
+                        </div> 
+                        -->
+                        <li class="menu-item" style="max-height: 3rem">
+                            <a href="http://localhost:8080/BiagiottiApp/HomeServlet"><img src="./assets/images/logo.png"></a> 
+                        </li>
                         <li class="menu-item">
                             Categories
                             <ul class="menu-item-on-hover">
@@ -91,25 +92,23 @@
 
                         </li>
                         <li class="menu-item">
-                            Biagiotti
+                            Biagiotti 
                             <ul class="menu-item-on-hover">
                                 <li class="menu-link"><a href="aaa.com"></a>About Us</li>
                                 <li class="menu-link"><a href="aaa.com"></a>Contact Us</li>
                             </ul>
                         </li>
+                    </div>
+                    <div class="header-menu-option">
+                        <form action="SearchServlet">
+                            <input type="text" name="key" class="form-control">
+                            <button type="submit" class="header-menu-options-search"><i
+                                    class="fa fa-search"></i></button>
 
-
-                        <div class="header-menu-option">
-                            <form action="SearchServlet">
-                                <input type="text" name="key" class="form-control">
-                                <button type="submit" class="header-menu-options-search"><i
-                                        class="fa fa-search"></i></button>
-
-                            </form>
-                            <a href="CartServlet"><span class="header-menu-options-shoppingbag"><i class="fa fa-shopping-bag"></i></span>
-                            </a>
-                            <span class="header-menu-options-more-option">More</span>
-                        </div>
+                        </form>
+                        <a href="CartServlet"><span class="header-menu-options-shoppingbag"><i class="fa fa-shopping-bag"></i></span>
+                        </a>
+                        <span class="header-menu-options-more-option">More</span>
                     </div>
 
                 </div>

@@ -39,6 +39,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 30rem;
+}
+.logohome {
+    max-height: 10rem;
 }
 
 .primary-menu {
@@ -63,6 +67,7 @@
     padding-left: 1rem;
     position: relative;
     color: white;
+    list-style: none;
 }
 
 .menu-item:hover .menu-item-on-hover {
@@ -128,6 +133,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    text-align: center;
 }
 
 .product-favourite {
@@ -140,7 +146,6 @@
 
 .thumnnail-wrap {
     position: relative;
-    ;
 }
 
 .product-favourite {
@@ -387,7 +392,6 @@ th {
     max-height: 100px;
     float: left;
     -webkit-margin-end: 15px;
-    margin-inline-end: 15px;
 }
 
 td {
